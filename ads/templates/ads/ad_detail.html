@@ -1,0 +1,7 @@
+<h1>{{ ad.name }}</h1>
+<ul>
+{% for ch in ad.ad_char_set.all %}
+	<li>{{ ch }}: {{ ch.value }} {{ ch.measurement_unit }}</li>
+{% endfor %}
+</ul>
+Цена: {{ ad.cost }}
