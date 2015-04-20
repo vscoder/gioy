@@ -4,6 +4,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from mptt.models import MPTTModel, TreeForeignKey
 
 # Create your models here.
 
@@ -13,13 +14,25 @@ class Char(models.Model):
     def __unicode__(self):
         return self.name
 
-class Category(models.Model):
-    parent = models.ForeignKey('self', blank=True, null=True)
+#class Category(models.Model):
+#    parent = models.ForeignKey('self', blank=True, null=True)
+#    name = models.CharField(max_length=100)
+#    chars = models.ManyToManyField(Char, blank=True, null=True)
+#
+#    def __unicode__(self):
+#        return self.name
+
+class Category(MPTTModel):
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='children', db_index=True)
     name = models.CharField(max_length=100)
-    chars = models.ManyToManyField(Char, blank=True, null=True)
+    chars = models.ManyToManyField(Char, blank=True)
 
     def __unicode__(self):
         return self.name
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
+
 
 class Ad(models.Model):
     buyer = models.ForeignKey(User)
@@ -37,9 +50,9 @@ class Ad(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=days) <= self.pub_date <= now
 
-
     def __unicode__(self):
         return self.name
+
 
 class Ad_char(models.Model):
     ad = models.ForeignKey(Ad)

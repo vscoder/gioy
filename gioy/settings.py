@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'ads',
     'django_extensions',
+    'mptt',
 )
 
 MIDDLEWARE_CLASSES = (
