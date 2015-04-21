@@ -8,4 +8,5 @@ urlpatterns = [
 
     url(r'^ads/', include('ads.urls', namespace='ads')),
     url(r'^admin/', include(admin.site.urls)),
+include('django.contrib.auth.urls'),
 ]
