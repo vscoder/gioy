@@ -1,7 +1,15 @@
-<h1>{{ ad.name }}</h1>
-<ul>
-{% for ch in ad.ad_char_set.all %}
-	<li>{{ ch }}: {{ ch.value }} {{ ch.measurement_unit }}</li>
-{% endfor %}
-</ul>
-Цена: {{ ad.cost }}
+{% extends 'home/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+    {{ ad.name }}
+{% endblock %}
+
+{% block content %}
+    <ul>
+    {% for ch in ad.ad_char_set.all %}
+        <li>{{ ch }}: {{ ch.value }} {{ ch.measurement_unit }}</li>
+    {% endfor %}
+    </ul>
+    Cost: {{ ad.cost }}
+{% endblock %}

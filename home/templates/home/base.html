@@ -1,0 +1,27 @@
+{% extends 'home/bootstrap.html' %}
+{% load bootstrap3 %}
+
+{% block bootstrap3_content %}
+    <div class="navbar" role="navigation">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'ads:index' %}">Advertisments</a></li>
+            <li><a href="#">Contacts</a></li>
+    </div>
+    <!--/navbar-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8 content">
+                <h1>{% block title %}(no title){% endblock %}</h1>
+                {% bootstrap_messages %}
+                {% block content %}(no content){% endblock %}
+            </div><!--/content-->
+            <div class="col-sm-2 sidebar pull-right">
+                <div class="sidebar-module">
+                    sidebar-content
+                </div>
+            </div>
+        </div><!--/row-->
+    </div><!--/container-->
+
+{% endblock %}

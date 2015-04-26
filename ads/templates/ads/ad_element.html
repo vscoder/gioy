@@ -1,0 +1,11 @@
+<div class="media">
+    <a class="pull-left" href="{% url 'ads:detail' ad.id %}">
+        <img class="media-object" src="" alt="image">
+    </a>
+    <div class="media-body">
+        <a href="{% url 'ads:detail' ad.id %}">
+            <h4 "media-heading">{{ ad.name }}</h4>
+        </a>
+        Cost: {{ ad.cost }}
+    </div>
+</div>

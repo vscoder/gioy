@@ -39,7 +39,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ads',
+    'home',
     'django_extensions',
+    'bootstrap3',
     'mptt',
 )
 

@@ -1,13 +1,17 @@
+{% extends 'home/base.html' %}
+{% load bootstrap3 %}
 {% load staticfiles %}
 
+<!--
 <link rel="stylesheet" type="text/css" href="{% static 'ads/style.css' %}" />
+-->
 
+{% block content %}
 {% if latest_ads_list %}
-    <ul>
     {% for ad in latest_ads_list %}
-        <li><a href="{% url 'ads:detail' ad.id %}">{{ ad.name }}</a> <b>{{ ad.cost }}</b></li>
+        {% include "ads/ad_element.html" %}
     {% endfor %}
-    </ul>
 {% else %}
     <p>No ads are available.</p>
 {% endif %}
+{% endblock %}
