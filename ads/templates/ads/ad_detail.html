@@ -11,5 +11,6 @@
         <li>{{ ch }}: {{ ch.value }} {{ ch.measurement_unit }}</li>
     {% endfor %}
     </ul>
-    Cost: {{ ad.cost }}
+    Cost: {{ ad.cost }}<br>
+    {{ ad.comment }}
 {% endblock %}
