@@ -33,14 +33,17 @@ class Category(MPTTModel):
     class MPTTMeta:
         order_insertion_by = ['name']
 
+class Buyer(User):
+    phone = models.CharField(max_length=11)
 
 class Ad(models.Model):
-    buyer = models.ForeignKey(User)
+    buyer = models.ForeignKey(Buyer)
     category = models.ForeignKey(Category)
     name = models.CharField(max_length=100)
     pub_date = models.DateTimeField('publication date', default=timezone.now)
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     chars = models.ManyToManyField(Char, through='Ad_char')
+    comment = models.TextField(blank=True, null=True, max_length=1023)
 
     def was_published_recently(self, days=1):
         """
